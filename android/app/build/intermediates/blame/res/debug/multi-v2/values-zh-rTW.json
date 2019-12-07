@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Volumes/Untitled/Assignment-master/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rTW/values-zh-rTW.xml",
+            "outputFile": "/Volumes/Untitled/Assignment/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rTW/values-zh-rTW.xml",
             "map": [
                 {
                     "source": "/Users/apple/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/26927c5383a26bbb023659ff298a0212/res/values-zh-rTW/values-zh-rTW.xml",

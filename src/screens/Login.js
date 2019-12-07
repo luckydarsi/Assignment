@@ -8,7 +8,7 @@ import {
 import { addUser } from '../store/Actions'
 import { connect } from "react-redux";
 
-export default class Login extends React.Component {
+class Login extends React.Component {
 
     constructor() {
         super();
@@ -25,10 +25,10 @@ export default class Login extends React.Component {
     }
 
     submit() {
-        if(this.state.mail && this.state.mail.length ){
-            if(this.state.password && this.state.password.length ){
-                if(this.state.mail === this.state.data.username){
-                    if(this.state.password === this.state.data.password){
+        if(this.props.state.mail && this.props.state.mail.length ){
+            if(this.props.state.password && this.props.state.password.length ){
+                if(this.props.state.mail === this.state.data.username){
+                    if(this.props.state.password === this.state.data.password){
                         this.props.navigation.navigate('Dashboard')
                     }else{
                         alert('Incorrect Password')
@@ -53,16 +53,18 @@ export default class Login extends React.Component {
                 <View style={{ marginHorizontal: 40 }} >
                     <View style={{}} >
                         <TextInput
-                            value={this.state.mail}
-                            onChangeText={(value) => { this.setState({ mail: value }) }}
+                            value={this.props.state.mail}
+                            onChangeText={(value) => { this.props.updateStateVal({ mail: value }) }}
+                            // onChangeText={(value) => { this.setState({ mail: value }) }}
                             placeholder='Username'
                             style={{ alignSelf: 'stretch', height: 50, borderBottomWidth: 0.5 }}
                         />
                     </View>
                     <View style={{}} >
                         <TextInput
-                            value={this.state.password}
-                            onChangeText={(value) => { this.setState({ password: value }) }}
+                            value={this.props.state.password}
+                            onChangeText={(value) => { this.props.updateStateVal({ password: value }) }}
+                            // onChangeText={(value) => { this.setState({ password: value }) }}
                             placeholder='Password'
                             style={{ alignSelf: 'stretch', height: 50, borderBottomWidth: 0.5 }}
                         />
@@ -76,15 +78,17 @@ export default class Login extends React.Component {
     }
 }
 
-// const mapStateToProps = (state) => {
-//     return {
-//       state
-//     }
-//   }
-// const mapDispatchToProps = (dispatch)=> {
-//     return {
-//       addUser: (data) => dispatch(addUser(data))
-//     }
-//   }
+const mapStateToProps = state => {
+    return {
+        state: state.Login
+    }
+}
 
-//  export default connect(mapStateToProps,mapDispatchToProps)(Login)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        // we call it using this.props.updateStateVal({ mail })
+        updateStateVal: (data) => dispatch({ type: 'Login_Store_InputValue', data }),
+    }
+}
+
+ export default connect(mapStateToProps,mapDispatchToProps)(Login)

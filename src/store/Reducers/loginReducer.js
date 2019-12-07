@@ -1,17 +1,28 @@
-export const loginReducer = (state = [], action) => {
+import {
+    Login_Store_InputValue,
+} from '../Actions/index';
+
+const initialState = {
+    mail:'',
+    password:''
+}
+
+const loginReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'ADD_USER': {
-            console.log("from reducer", action.payload);
-            return [
-                ...state,
-                {
-                    ...action.payload
+        case Login_Store_InputValue:
+            {
+                return {
+                    ...state,...action.data
                 }
-            ]
-        }
-        case 'DELETE_USER': {
-            return state
-        }
-        default: return state
+            }
+        default:
+            {
+                return {
+                    ...state
+                };
+            }
     }
 }
+
+
+export default loginReducer;
